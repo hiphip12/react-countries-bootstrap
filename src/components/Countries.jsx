@@ -1,40 +1,27 @@
 import React, { useEffect, useState } from 'react';
-
-
-import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
-import { LinkContainer } from 'react-router-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { initializeCountries } from '../features/countries/countriesSlice';
 import CountryCard from './CountryCard';
-
 
 const Countries = () => {
   const dispatch = useDispatch();
   const countriesList = useSelector((state) => state.countries.countries);
   const loading = useSelector((state) => state.countries.isLoading);
 
-  console.log("countriesList =", countriesList)
+  console.log("CountriesList = ", countriesList)
 
   const [search, setSearch] = useState('')
 
   console.log("Search: ", search)
 
   useEffect(() => {
-    dispatchEvent(initializeCountries())
+    dispatch(initializeCountries())
   },
     [dispatch])
-
-  // We will be replacing this with data from our API.
-  // const country = {
-  //   name: {
-  //     common: 'Example Country'
-  //   }
-  // }
 
   return (
     <Container fluid>
@@ -52,11 +39,29 @@ const Countries = () => {
           </Form>
         </Col>
       </Row>
-      {countriesList.map((country) => {
-        return (
-          <CountryCard country={country} key={country.name.common} />
-        )
-      })}
+      <Row xs={2} md={3} lg={4} className=" g-3">
+        {/* Add filter here, and filter before you map the results. Your filter should use the search hook from above to compare against */}
+        {/* {countriesList.map((country) => {
+          return (
+            <CountryCard country={country} key={country.name.common} />
+          )
+        })} */}
+        {countriesList
+          .filter((c) => {
+            return c.name.official.toLowerCase().includes(search.toLowerCase());
+          })
+          .map((country) => (
+            <CountryCard country={country} key={country} />
+          ))}
+        {/* {countriesList
+          .filter((c) => {
+            return c.name.official.toLowerCase().includes(search.toLowerCase());
+          })
+          .map((country) => (
+            <CountryCard key={country.name} country={country}
+          ))} */}
+
+      </Row>
     </Container>
   );
 };
