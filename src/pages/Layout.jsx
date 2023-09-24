@@ -5,6 +5,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import { LinkContainer } from 'react-router-bootstrap';
+import { logout } from '../auth/firebase';
+import { Button } from 'react-bootstrap';
 
 const Layout = () => {
   return (
@@ -18,18 +20,29 @@ const Layout = () => {
                 <LinkContainer to="/">
                   <Nav.Link>Home</Nav.Link>
                 </LinkContainer>
+
                 <LinkContainer to="/countries">
                   <Nav.Link>Countries</Nav.Link>
                 </LinkContainer>
+
+                <LinkContainer to="/login">
+                  <Nav.Link>Login</Nav.Link>
+                </LinkContainer>
+
+                <LinkContainer to="/register">
+                  <Nav.Link>Register</Nav.Link>
+                </LinkContainer>
+
               </Nav>
             </Navbar.Collapse>
+            <Button onClick={logout}>Logout</Button>
           </Container>
-        </Navbar>
-      </Row>
+        </Navbar >
+      </Row >
       <Row>
         <Outlet />
       </Row>
-    </Container>
+    </Container >
   );
 };
 
