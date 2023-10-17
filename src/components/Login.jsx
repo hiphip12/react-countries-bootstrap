@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth, loginWithEmailAndPassword } from "../auth/firebase";
+
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -32,12 +32,12 @@ const Login = () => {
             />
             <Button onClick={() => loginWithEmailAndPassword(email, password)}>Login</Button>
             <div>
-                Dont have an account?
+                Don't have an account?
                 <Link to="/register">Register</Link>
             </div>
         </div>
     )
 
-};
+}
 
 export default Login;

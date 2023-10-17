@@ -1,32 +1,39 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Container, Spinner, Col, Row, Image, Button } from 'react-bootstrap';
+import { Button, Col, Container, Image, Row, Spinner } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-
 const CountriesSingle = () => {
-  // Function hooks
+  //function hooks
   const location = useLocation();
   const navigate = useNavigate();
 
-  // State Hooks
+  //state Hooks
   const [weather, setWeather] = useState('');
   const [errors, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Destructuring variables
+  //destructuring variables
   const country = location.state.country;
 
   useEffect(() => {
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${country.capital}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_KEY}`)
-      .catch((err) => {
-        setError(true);
-      })
-      .then((res) => {
-        setWeather(res.data);
-        setLoading(false);
-      })
+    if (!country.capital) {
+      setLoading(false)
+      setError(true)
+    } else {
 
+      axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${country.capital}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_KEY}`)
+        .catch((error) => {
+          console.log(error)
+          setError(true)
+        })
+        .then((res) => {
+          if (res && res.data) {
+            setWeather(res.data)
+          }
+          setLoading(false)
+        })
+    }
   }, [country.capital])
 
   console.log("Weather: ", weather);
@@ -44,7 +51,7 @@ const CountriesSingle = () => {
         </Spinner>
       </Container>
     );
-  };
+  }
 
   return (
     <Container>
@@ -53,11 +60,11 @@ const CountriesSingle = () => {
           <Image thumbnail src={`https://source.unsplash.com/1600x900/?${country.capital}`} />
         </Col>
         <Col>
-          <h2 className='display-4'>{country.name.common}</h2>
+          <h2 className="display-4">{country.name.common}</h2>
           <h3>{country.capital}</h3>
           {errors && (
             <p>
-              Sorry, no weather info for this country
+              Sorry, we don't have weather information for this country.
             </p>
           )}
           {!errors && weather && (
@@ -77,7 +84,7 @@ const CountriesSingle = () => {
           </Button>
         </Col>
       </Row>
-    </Container >
+    </Container>
   );
 };
 

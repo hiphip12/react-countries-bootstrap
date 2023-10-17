@@ -40,27 +40,19 @@ const Countries = () => {
         </Col>
       </Row>
       <Row xs={2} md={3} lg={4} className=" g-3">
-        {/* Add filter here, and filter before you map the results. Your filter should use the search hook from above to compare against */}
-        {/* {countriesList.map((country) => {
-          return (
-            <CountryCard country={country} key={country.name.common} />
-          )
-        })} */}
+        {/* {countriesList.reduce((acc, country) => {
+            if (country.name.official.toLowerCase().includes(search.toLowerCase())) {
+             acc.push(<CountryCard key={country.name} country={country} />);
+          }
+          return acc;
+          }, [])} */}
         {countriesList
           .filter((c) => {
             return c.name.official.toLowerCase().includes(search.toLowerCase());
           })
           .map((country) => (
-            <CountryCard country={country} key={country} />
+            <CountryCard key={country.name.common} country={country} />
           ))}
-        {/* {countriesList
-          .filter((c) => {
-            return c.name.official.toLowerCase().includes(search.toLowerCase());
-          })
-          .map((country) => (
-            <CountryCard key={country.name} country={country}
-          ))} */}
-
       </Row>
     </Container>
   );
