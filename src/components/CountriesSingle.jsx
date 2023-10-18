@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Image, Row, Spinner } from 'react-bootstrap';
+import { Button, Card, Col, Container, Image, Row, Spinner } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const CountriesSingle = () => {
@@ -83,14 +83,14 @@ const CountriesSingle = () => {
       month: "long",
       day: "numeric",
     };
-    return day.toLocaleString("en-us", options); // Friday, January 15, 2021
+    return day.toLocaleString("en-uk", options); // Friday, January 15, 2021
     // } else {
     //   return day.toLocaleString("en-us", { weekday: "long" }); // Friday
     // }
   }
   if (loading) {
     return (
-      <Container>
+      <Container className="text-center">
         <Spinner
           animation="border"
           role="status"
@@ -106,104 +106,67 @@ const CountriesSingle = () => {
   return (
     <Container>
       <Row className="mt-5">
-        <Col>
+        <Col md={6}>
           <Image thumbnail src={`https://source.unsplash.com/1600x900/?${country.capital}`} />
         </Col>
-        <Col>
+        <Col md={6}>
           <h2 className="display-4">{country.name.common}</h2>
           <h3>{country.capital}</h3>
           {errors && (
-            <p>
+            <p className="alert alert-danger">
               Sorry, we don't have weather information for this country.
             </p>
           )}
           {!errors && weather && (
             <div>
               <p>
-                Right now it is <strong>{parseInt(weather.main.temp)}</strong> degrees in {country.capital} and {weather.weather[0].description}
+                Right now it is <strong>{parseInt(weather.main.temp)}</strong> °C in {country.capital} and {weather.weather[0].description}
               </p>
               <img src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt={`${weather.weather[0].description}`} />
             </div>
           )}
         </Col>
-        <Container style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-          <Container>
-            {/* tryng best way to get and render dates and single days */}
-            {/* {!errors && forecast && (
-            <div>
-              <p>Forecast:</p>
-              {forecast.list.map((item, index) => (
-                <div key={index}>
-                  <p>
-                    Temperature: {item.main.temp} degrees in {country.capital} and {item.weather[0].description}
-                  </p>
-                  <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} alt={`${item.weather[0].description}`} />
-                </div>
-              ))}
-            </div>
-          )} */}
+      </Row>
+      <Col className="mt-5">
+        <h3>Forecast in the next 5 days:</h3>
+        {!errors && forecast && (
+          <Row className="d-flex flex-wrap">
+            {forecast.list.map((item, index) => {
+              // access date from the forecast entry to use is as string
+              const currentDate = createDate(item.dt);
 
-            {/* {!errors && forecast && (
-              <div>
-                <p>Forecast:</p>
-                {forecast.list.map((forecastItem) => {
-
-                  const currentDate = createDate(forecastItem.dt);
-
-                  if (currentDate !== previousDate) {
-                    previousDate = currentDate;
-                    return (
-                      <div key={forecastItem.dt}>
-                        <p>Date: {currentDate}</p>
+              // To render current new day, checking against previous one
+              if (index === 0 || currentDate !== createDate(forecast.list[index - 1].dt)) {
+                return (
+                  <div key={index} className="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <Card>
+                      <Card.Body className="text-center">
+                        <h5>{currentDate}</h5>
                         <p>
-                          Temperature: {forecastItem.main.temp} degrees in {country.capital} and {forecastItem.weather[0].description}
-                        </p>
-                        <img src={`http://openweathermap.org/img/wn/${forecastItem.weather[0].icon}@2x.png`} alt={forecastItem.weather[0].description} />
-                      </div>
-                    );
-                  }
-
-                  return null;
-                })}
-              </div>
-            )} */}
-
-            {!errors && forecast && (
-              <div>
-                <p>Forecast:</p>
-                {forecast.list.map((item, index) => {
-                  // access date from the forecast entry to use is as string
-                  const currentDate = createDate(item.dt);
-
-                  // To render current new day, checking against previous one
-                  if (index === 0 || currentDate !== createDate(forecast.list[index - 1].dt)) {
-                    return (
-                      <div key={index}>
-                        <p>Date: {currentDate}</p>
-                        <p>
-                          Temperature: {item.main.temp} degrees in {country.capital} and {item.weather[0].description}
+                          {Math.round(item.main.temp)} °C in {country.capital} and {item.weather[0].description}
                         </p>
                         <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} alt={item.weather[0].description} />
-                      </div>
-                    );
-                  }
+                      </Card.Body>
+                    </Card>
+                  </div>
+                );
+              }
 
-                  return null; // to prevent rendiring more items for the same day.
-                })}
-              </div>
-            )}
-
-          </Container>
-        </Container>
-      </Row>
-      <Row>
+              return null; // to prevent rendiring more items for the same day.
+            })}
+            {/* </Card> */}
+          </Row>
+        )}
+      </Col>
+      {/* </Row> */}
+      <Row className="mt-4">
         <Col>
           <Button variant="light" onClick={() => navigate('/countries')}>
             Back to Countries
           </Button>
         </Col>
       </Row>
-    </Container>
+    </Container >
   );
 };
 

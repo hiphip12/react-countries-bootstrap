@@ -15,7 +15,7 @@ const firebaseConfig = {
     storageBucket: "countries-react-10e19.appspot.com",
     messagingSenderId: "",
     appId: "",
-    measurementId: "G-94H7S3YCLN"
+    measurementId: ""
 };
 
 // Initialize Firebase

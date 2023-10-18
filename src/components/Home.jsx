@@ -8,8 +8,8 @@ const Home = () => {
   return (
     <div className="background-img" style={{ minHeight: '80rem' }}>
       <div className="container mt-5">
-        <h1 className="text-center">Weather Status By Country 🌤️</h1>
-        <p className="text-center">This is a simple app made in React and using Bootstrap</p>
+        <h1 className="text-center">React & Bootstrap Weather App 🌤️</h1>
+        <p className="text-center">Wheater status & forecats by country capital</p>
 
         <div className="card mx-auto" style={{ maxWidth: '60rem' }}>
           <div className="card-body text-center bg-warning">
