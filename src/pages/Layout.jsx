@@ -14,7 +14,7 @@ const Layout = () => {
   return (
     <Container fluid>
       <Row>
-        <Navbar bg="light" variant="light">
+        <Navbar>
           <Container className="justify-content-end">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -28,17 +28,17 @@ const Layout = () => {
                 <LinkContainer to="/favourites">
                   <Nav.Link>Favourites</Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="/login">
+                {/* <LinkContainer to="/login">
                   <Nav.Link>Login</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to="/register">
                   <Nav.Link>Register</Nav.Link>
-                </LinkContainer>
+                </LinkContainer> */}
               </Nav>
             </Navbar.Collapse>
             {user ? (
-              <Button variant="primary" hidden={loading} onClick={logout}>
-                Logout</Button>) : (<LinkContainer to="/login"><Button>Login</Button></LinkContainer>)}
+              <Button variant="secondary" hidden={loading} onClick={logout}>
+                Logout</Button>) : (<LinkContainer to="/login"><Button variant="success">Login</Button></LinkContainer>)}
             {/* <Button variant="primary" onClick={logout}>Logout</Button> */}
 
             {/* {user && loading ? (

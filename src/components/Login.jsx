@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Col } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, loginWithEmailAndPassword } from "../auth/firebase";
@@ -17,25 +17,29 @@ const Login = () => {
     }, [user, loading])
 
     return (
-        <div>
-            <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-            />
-            <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
-            />
-            <Button onClick={() => loginWithEmailAndPassword(email, password)}>Login</Button>
+        <Col className="d-flex flex-column justify-content-center">
             <div>
-                Don't have an account?
-                <Link to="/register">Register</Link>
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email"
+                    className="m-2"
+                />
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password"
+                    className="m-2"
+                />
             </div>
-        </div>
+            <Button className="mt-3" variant="success" onClick={() => loginWithEmailAndPassword(email, password)}>Log In</Button>
+            <div className="m-3">
+                Don't have an account?
+                <Link to="/register" className="m-2">Register</Link>
+            </div>
+        </Col>
     )
 
 }

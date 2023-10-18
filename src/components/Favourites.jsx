@@ -40,7 +40,7 @@ const Favourites = () => {
         )
     }
 
-    return (<Container fluid>
+    return (<Container fluid className="bg-secondary" style={{ minHeight: '80rem' }}>
         <Row>
             <Col className="mt-5 d-flex justify-content-center">
                 <Form>
@@ -56,7 +56,7 @@ const Favourites = () => {
             </Col>
         </Row>
         <Row xs={2} md={3} lg={4} className=" g-3">
-            <Button onClick={() => {
+            <Button variant="light" onClick={() => {
                 dispatch(clearFavourites())
             }}>Clear Favourites</Button>
         </Row>

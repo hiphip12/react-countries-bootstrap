@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Container, Image, Row, Spinner } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
+import WeatherMap from './WeatherMap';
 
 const CountriesSingle = () => {
   //function hooks
@@ -104,12 +105,9 @@ const CountriesSingle = () => {
   }
 
   return (
-    <Container>
-      <Row className="mt-5">
-        <Col md={6}>
-          <Image thumbnail src={`https://source.unsplash.com/1600x900/?${country.capital}`} />
-        </Col>
-        <Col md={6}>
+    <Container className="bg-secondary" style={{ minHeight: '80rem' }}>
+      <Row className='text-center'>
+        <Col className="mt-5">
           <h2 className="display-4">{country.name.common}</h2>
           <h3>{country.capital}</h3>
           {errors && (
@@ -120,53 +118,91 @@ const CountriesSingle = () => {
           {!errors && weather && (
             <div>
               <p>
-                Right now it is <strong>{parseInt(weather.main.temp)}</strong> °C in {country.capital} and {weather.weather[0].description}
+                Right now it is <strong>{parseInt(weather.main.temp)} °C</strong> in {country.capital} and {weather.weather[0].description}
               </p>
-              <img src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt={`${weather.weather[0].description}`} />
+              <img
+                src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                alt={`${weather.weather[0].description}`}
+              />
+            </div>
+          )}
+          <Col md={6}>
+            <Image thumbnail src={`https://source.unsplash.com/1600x900/?${country.capital}`} className="mt-5 justify-content-center" style={{
+              objectFit: "cover",
+              // minHeight: "150px",
+              // maxHeight: "150px",
+              minWidth: "600px",
+              maxWidth: "600px",
+            }} />
+            {/* <Card.Img
+                                variant="top"
+                                src={country.flags.svg}
+                                className="rounded h-50 mt-3"
+                                style={{
+                                    objectFit: "cover",
+                                    minHeight: "150px",
+                                    maxHeight: "150px",
+                                    // minWidth: "400px",
+                                    maxWidth: "250px",
+                                }}
+                            /> */}
+          </Col>
+        </Col>
+        <Col className="mt-5">
+          <h3>Forecast for the next 5 days:</h3>
+          {!errors && forecast && (
+            <div className="">
+              {forecast.list.map((item, index) => {
+                const currentDate = createDate(item.dt);
+                if (index === 0 || currentDate !== createDate(forecast.list[index - 1].dt)) {
+                  return (
+                    // <Col key={index} className="m-4">
+                    //   <Card >
+                    //     <Card.Body className="text-center">
+                    //       <h5>{currentDate}</h5>
+                    //       <p>
+                    //         {Math.round(item.main.temp)} °C in {country.capital} and {item.weather[0].description}
+                    //       </p>
+                    //       <img
+                    //         src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
+                    //         alt={item.weather[0].description}
+                    //       />
+                    //     </Card.Body>
+                    //   </Card>
+                    // </Col>
+                    <Col key={index} className="mt-5 justify-content-center ms-5 me-5 ps-5 pe-5">
+                      <Card>
+                        <Card.Body className="text-center">
+                          <h5>{currentDate}</h5>
+                          <p>
+                            {Math.round(item.main.temp)} °C in {country.capital} and {item.weather[0].description}
+                          </p>
+                          <img
+                            src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
+                            alt={item.weather[0].description}
+                          />
+                        </Card.Body>
+                      </Card>
+                    </Col>
+
+
+                  );
+                }
+                return null;
+              })}
             </div>
           )}
         </Col>
       </Row>
-      <Col className="mt-5">
-        <h3>Forecast in the next 5 days:</h3>
-        {!errors && forecast && (
-          <Row className="d-flex flex-wrap">
-            {forecast.list.map((item, index) => {
-              // access date from the forecast entry to use is as string
-              const currentDate = createDate(item.dt);
-
-              // To render current new day, checking against previous one
-              if (index === 0 || currentDate !== createDate(forecast.list[index - 1].dt)) {
-                return (
-                  <div key={index} className="col-lg-3 col-md-4 col-sm-6 mb-4">
-                    <Card>
-                      <Card.Body className="text-center">
-                        <h5>{currentDate}</h5>
-                        <p>
-                          {Math.round(item.main.temp)} °C in {country.capital} and {item.weather[0].description}
-                        </p>
-                        <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} alt={item.weather[0].description} />
-                      </Card.Body>
-                    </Card>
-                  </div>
-                );
-              }
-
-              return null; // to prevent rendiring more items for the same day.
-            })}
-            {/* </Card> */}
-          </Row>
-        )}
-      </Col>
-      {/* </Row> */}
-      <Row className="mt-4">
+      <Row className="mt-4 text-center mb-5">
         <Col>
           <Button variant="light" onClick={() => navigate('/countries')}>
-            Back to Countries
+            ← Back to Countries
           </Button>
         </Col>
       </Row>
-    </Container >
+    </Container>
+
   );
 };
 
