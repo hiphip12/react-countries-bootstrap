@@ -6,10 +6,10 @@ function Footer() {
             <div className="container">
                 <div className="row">
                     <div className="col-md-6">
-                        <p>&copy; 2023 Your Company Name</p>
+                        <p>&copy; 2023 HipHip12 </p>
                     </div>
                     <div className="col-md-6 text-right">
-                        <p>Contact Us | Privacy Policy</p>
+                        <p>Contact: example@example.com</p>
                     </div>
                 </div>
             </div>

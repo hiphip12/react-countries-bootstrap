@@ -11,7 +11,7 @@ const countriesAPI = {
         // return request.then((response) => response.data);
     }
 
-}
+};
 
 // export default { getAll };
-export default countriesAPI
+export default countriesAPI;
