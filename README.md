@@ -14,14 +14,6 @@ This is a project done for the program in Web Development [@Helsinki Business Sc
 
 ## Set up
 
-Lando:
-
-```shell
-git clone https://github.com/hiphip12/react-countries-bootstrap.git
-```
-
-
-For alternatives, see [official Drupal docs](https://www.drupal.org/docs/getting-started/installing-drupal).
 
 
 ## Screenshots
@@ -38,19 +30,3 @@ For alternatives, see [official Drupal docs](https://www.drupal.org/docs/getting
 
 ## Credits
 
-The task itself and guidance were provided by the excellent [Santosh Kalwar](https://github.com/kalwar) from the Helsinki Business College.
-
-Hero banner's video is from [youtube](https://www.youtube.com/watch?v=QKKujrm8O7M).
-
-Pictures for "About" page and "Coming Soon" section, are courtesy of [Unsplash](https://unsplash.com/).
-
-Picture for "Who Am I" section, is courtesy of [Pexels](https://www.pexels.com).
-
-### Drupal Modules
-
-- [DXPR Themes](https://www.drupal.org/project/dxpr_theme)
-- [DXPR Builder](https://www.drupal.org/project/dxpr_builder)
-- [Pathauto](https://www.drupal.org/search/site/pathauto)
-- [Contact](https://www.drupal.org/docs/8/core/modules/contact/overview)
-- [File Delete](https://www.drupal.org/project/file_delete)
-- [Media File Delete](https://www.drupal.org/project/media_file_delete)
