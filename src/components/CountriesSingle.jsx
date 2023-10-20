@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Container, Image, Row, Spinner } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
-import WeatherMap from './WeatherMap';
 
 const CountriesSingle = () => {
   //function hooks
@@ -18,28 +17,6 @@ const CountriesSingle = () => {
   //destructuring variables
   const country = location.state.country;
 
-  // Declare a regular variable
-  let previousDate = '';
-
-  // useEffect(() => {
-  //   if (!country.capital) {
-  //     setLoading(false)
-  //     setError(true)
-  //   } else {
-
-  //     axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${country.capital}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_KEY}`)
-  //       .catch((error) => {
-  //         console.log(error)
-  //         setError(true)
-  //       })
-  //       .then((res) => {
-  //         if (res && res.data) {
-  //           setWeather(res.data)
-  //         }
-  //         setLoading(false)
-  //       })
-  //   }
-  // }, [country.capital])
   useEffect(() => {
     if (!country.capital) {
       setLoading(false);
@@ -77,17 +54,13 @@ const CountriesSingle = () => {
   // to get the date diplayed in the forecasts
   function createDate(dt) {
     const day = new Date(dt * 1000);
-    // if (type === "long") {
     const options = {
       weekday: "long",
       year: "numeric",
       month: "long",
       day: "numeric",
     };
-    return day.toLocaleString("en-uk", options); // Friday, January 15, 2021
-    // } else {
-    //   return day.toLocaleString("en-us", { weekday: "long" }); // Friday
-    // }
+    return day.toLocaleString("en-uk", options);
   }
   if (loading) {
     return (
@@ -105,7 +78,7 @@ const CountriesSingle = () => {
   }
 
   return (
-    <Container className="bg-secondary " style={{ minHeight: '80rem' }}>
+    <Container className="bg-secondary " style={{ minHeight: '62rem' }}>
 
 
       <Row className='text-center'>
@@ -118,14 +91,11 @@ const CountriesSingle = () => {
             className="mt-5 justify-content-center"
             style={{
               objectFit: "cover",
-              // maxWidth: "100%"
             }}
           />
           <h3 className='text-light mt-5'>Current weather:</h3>
           <Card className="justify-content-center mt-5 p-1">
             <Card.Body className='bg-info rounded pt-5'>
-              {/* <h2 className="display-4">{country.name.common}</h2>
-              <h3>{country.capital}</h3> */}
               {errors && (
                 <p style={{ fontSize: "4rem" }}>
                   🤷
@@ -142,32 +112,11 @@ const CountriesSingle = () => {
                   />
                 </div>
               )}
-
-              {/* <Card.Img thumbnail src={`https://source.unsplash.com/1600x900/?${country.capital}`} className="mt-5 justify-content-center" style={{
-                objectFit: "cover",
-                // minHeight: "150px",
-                // maxHeight: "150px",
-                minWidth: "600px",
-                maxWidth: "600px",
-              }} /> */}
             </Card.Body>
           </Card>
-          {/* <Card.Img
-                                variant="top"
-                                src={country.flags.svg}
-                                className="rounded h-50 mt-3"
-                                style={{
-                                    objectFit: "cover",
-                                    minHeight: "150px",
-                                    maxHeight: "150px",
-                                    // minWidth: "400px",
-                                    maxWidth: "250px",
-                                }}
-                            /> */}
-
         </Col>
         <Col className="mt-5">
-          <h3 className='text-light'>Forecast for today & the next 5 days:</h3>
+          <h3 className='text-light mx-1'>Forecast for today & the next 5 days:</h3>
           {errors && (
             <p className="alert alert-danger m-5 p-4 border-light" style={{ border: "5px solid" }}>
               Sorry, we don't have weather information for this country
@@ -181,23 +130,7 @@ const CountriesSingle = () => {
                 const currentDate = createDate(item.dt);
                 if (index === 0 || currentDate !== createDate(forecast.list[index - 1].dt)) {
                   return (
-                    // <Col key={index} className="m-4">
-                    //   <Card >
-                    //     <Card.Body className="text-center">
-                    //       <h5>{currentDate}</h5>
-                    //       <p>
-                    //         {Math.round(item.main.temp)} °C in {country.capital} and {item.weather[0].description}
-                    //       </p>
-                    //       <img
-                    //         src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
-                    //         alt={item.weather[0].description}
-                    //       />
-                    //     </Card.Body>
-                    //   </Card>
-                    // </Col>
-
                     <Col key={index}>
-                      {/* <Col key={index} className="mt-5 justify-content-center ms-5 me-5 ps-5 pe-5"> */}
                       <Card className="justify-content-center m-5 p-1">
                         <Card.Body className="text-center bg-info rounded">
                           <Row>
@@ -217,11 +150,9 @@ const CountriesSingle = () => {
                         </Card.Body>
                       </Card>
                     </Col>
-
-
                   );
                 }
-                return null;
+                return null; // to avoid more entries for the same day
               })}
             </div>
           )}

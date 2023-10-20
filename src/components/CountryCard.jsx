@@ -8,7 +8,7 @@ const CountryCard = ({ country }) => {
     const dispatch = useDispatch();
 
     return (
-        <Col className="mt-5">
+        <Col className="mb-5">
 
             <Card className="h-100 m-2 bg-info">
 
@@ -33,7 +33,6 @@ const CountryCard = ({ country }) => {
                                     objectFit: "cover",
                                     minHeight: "150px",
                                     maxHeight: "150px",
-                                    // minWidth: "400px",
                                     maxWidth: "250px",
                                 }}
                             />
@@ -77,14 +76,14 @@ const CountryCard = ({ country }) => {
                         </Card.Body>
                     </div>
                 </LinkContainer>
-                <Card.Footer className="text-center bg-info text-primary border-0 ms-3 me-3">
+                <Card.Footer className="text-center bg-info border-0 ms-3 me-3">
                     {favouritesList?.includes(country.name.common) ? (
                         <i
-                            className="bi-hand-thumbs-up-fill m-1 p-2 fs-4"
+                            className="bi-hand-thumbs-up-fill text-secondary m-1 p-2 fs-4"
                             onClick={() => dispatch(removeFavourite(country.name.common))}></i>
                     ) : (
                         <i
-                            className="bi-hand-thumbs-up m-1 p-2 fs-4"
+                            className="bi-hand-thumbs-up text-secondary m-1 p-2 fs-4"
                             onClick={() => dispatch(addFavourite(country.name.common))}></i>
                     )}
                 </Card.Footer>

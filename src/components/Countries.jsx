@@ -26,7 +26,7 @@ const Countries = () => {
   return (
     <Container fluid className="bg-secondary" style={{ minHeight: '70rem' }} >
       <Row>
-        <Col className="mt-5 d-flex justify-content-center">
+        <Col className="my-5 d-flex justify-content-center">
           <Form>
             <Form.Control
               style={{ width: '18rem' }}
@@ -39,13 +39,7 @@ const Countries = () => {
           </Form>
         </Col>
       </Row>
-      <Row xs={2} md={3} lg={4} className=" g-3">
-        {/* {countriesList.reduce((acc, country) => {
-            if (country.name.official.toLowerCase().includes(search.toLowerCase())) {
-             acc.push(<CountryCard key={country.name} country={country} />);
-          }
-          return acc;
-          }, [])} */}
+      <Row xs={1} md={2} lg={4} className=" g-3">
         {countriesList
           .filter((c) => {
             return c.name.official.toLowerCase().includes(search.toLowerCase());

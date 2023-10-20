@@ -22,7 +22,7 @@ const Register = () => {
     }, [user, loading])
 
     return (
-        <Container className="d-flex flex-column align-items-center justify-content-center text-center bg-secondary" style={{ minHeight: '55rem' }}>
+        <Container className="d-flex flex-column align-items-center justify-content-center text-center bg-secondary" style={{ minHeight: '62rem' }}>
             <Col className="d-flex flex-column mt-5 pt-5">
                 <h5 className="text-light">Please register below</h5>
                 <div className="d-flex flex-column mt-2">
@@ -51,7 +51,7 @@ const Register = () => {
                 <Button className="my-3" variant="info" onClick={register}>Register</Button>
                 <div className="m-3 text-light">
                     Already have an account?
-                    <Link to="/login" className="m-2 text-info">Login</Link>
+                    <Link to="/login" className="m-2 text-info">Log In</Link>
                 </div>
             </Col>
         </Container>

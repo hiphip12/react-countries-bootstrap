@@ -40,12 +40,11 @@ const Favourites = () => {
         )
     }
 
-    return (<Container fluid className="bg-secondary" style={{ minHeight: '80rem' }}>
+    return (<Container fluid className="bg-secondary" style={{ minHeight: '62rem' }}>
         <Row>
-            <Col className="mt-5 d-flex justify-content-center">
+            <Col className="my-5 d-flex justify-content-center">
                 <Form>
                     <Form.Control
-                        // style={{ minWidth: '12rem' }}
                         type="search"
                         className="me-2 "
                         placeholder="Search for countries"
@@ -57,18 +56,8 @@ const Favourites = () => {
                     dispatch(clearFavourites())
                 }}>Clear All</Button>
             </Col>
-            {/* <Col className="mt-5 d-flex justify-content-center">
-                <Button variant="light" onClick={() => {
-                    dispatch(clearFavourites())
-                }}>Clear All</Button>
-            </Col> */}
         </Row>
-        {/* <Row xs={2} md={3} lg={4} className=" g-3">
-            <Button variant="light" onClick={() => {
-                dispatch(clearFavourites())
-            }}>Clear Favourites</Button>
-        </Row> */}
-        <Row xs={2} md={3} lg={4} className=" g-3">
+        <Row xs={1} md={2} lg={4} className=" g-3">
             {countriesList
                 .filter((c) => {
                     return c.name.official.toLowerCase().includes(search.toLowerCase());

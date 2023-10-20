@@ -28,21 +28,11 @@ const Layout = () => {
                 <LinkContainer to="/favourites">
                   <Nav.Link>Favourites</Nav.Link>
                 </LinkContainer>
-                {/* <LinkContainer to="/login">
-                  <Nav.Link>Login</Nav.Link>
-                </LinkContainer>
-                <LinkContainer to="/register">
-                  <Nav.Link>Register</Nav.Link>
-                </LinkContainer> */}
               </Nav>
             </Navbar.Collapse>
             {user ? (
               <Button variant="info" hidden={loading} onClick={logout}>
                 Logout</Button>) : (<LinkContainer to="/login"><Nav.Link>Log In</Nav.Link></LinkContainer>)}
-            {/* <Button variant="primary" onClick={logout}>Logout</Button> */}
-
-            {/* {user && loading ? (
-              <Button variant="primary" hidden={loading} onClick={logout}>                 Logout</Button>) : (<LinkContainer to="/login"><Button>Login</Button></LinkContainer>)} */}
           </Container>
         </Navbar>
       </Row>
