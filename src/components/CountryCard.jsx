@@ -10,14 +10,14 @@ const CountryCard = ({ country }) => {
     return (
         <Col className="mt-5">
 
-            <Card className="h-100 border-dark m-2">
+            <Card className="h-100 m-2 bg-info">
 
                 <LinkContainer
                     to={`/countries/${country.name.common}`}
                     state={{ country: country }}
                 >
                     <div className="p-3">
-                        <Card.Header className="d-flex flex-column bg-secondary text-light text-center p-4">
+                        <Card.Header className="d-flex flex-column bg-light text-center p-4">
                             <Card.Title>{country.name.common}</Card.Title>
                             <Card.Subtitle>
                                 {country.capital}
@@ -38,7 +38,7 @@ const CountryCard = ({ country }) => {
                                 }}
                             />
                         </Row>
-                        <Card.Body className="d-flex flex-column text-light text-center mt-3">
+                        <Card.Body className="d-flex flex-column text-center bg-light mt-3">
                             <ListGroup
                                 variant="flush"
                                 className="flex-grow-1 justify-content-end"
@@ -51,7 +51,7 @@ const CountryCard = ({ country }) => {
                                     </i>
                                 </ListGroup.Item>
                                 <ListGroup.Item>
-                                    <i className="bi bi-coin">
+                                    <i className="bi bi-cash-stack">
                                         <span className="ms-2">
                                             {Object.values(country.currencies ?? {})
                                                 .map((currency) => currency.name)
@@ -66,18 +66,25 @@ const CountryCard = ({ country }) => {
                                         </span>
                                     </i>
                                 </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <i className="bi bi-geo-alt">
+                                        <span className="ms-2">
+                                            {country.region.toLocaleString()}
+                                        </span>
+                                    </i>
+                                </ListGroup.Item>
                             </ListGroup>
                         </Card.Body>
                     </div>
                 </LinkContainer>
-                <Card.Footer className="text-center bg-secondary ms-3 me-3">
+                <Card.Footer className="text-center bg-info text-primary border-0 ms-3 me-3">
                     {favouritesList?.includes(country.name.common) ? (
                         <i
-                            className="bi-hand-thumbs-up-fill text-light m-1 p-2"
+                            className="bi-hand-thumbs-up-fill m-1 p-2 fs-4"
                             onClick={() => dispatch(removeFavourite(country.name.common))}></i>
                     ) : (
                         <i
-                            className="bi-hand-thumbs-up text-light m-1 p-2"
+                            className="bi-hand-thumbs-up m-1 p-2 fs-4"
                             onClick={() => dispatch(addFavourite(country.name.common))}></i>
                     )}
                 </Card.Footer>

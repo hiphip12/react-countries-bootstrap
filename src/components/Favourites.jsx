@@ -45,7 +45,7 @@ const Favourites = () => {
             <Col className="mt-5 d-flex justify-content-center">
                 <Form>
                     <Form.Control
-                        style={{ width: '18rem' }}
+                        // style={{ minWidth: '12rem' }}
                         type="search"
                         className="me-2 "
                         placeholder="Search for countries"
@@ -53,13 +53,21 @@ const Favourites = () => {
                         onChange={(e) => setSearch(e.target.value)}
                     />
                 </Form>
+                <Button variant="info" className="w-auto mx-3" onClick={() => {
+                    dispatch(clearFavourites())
+                }}>Clear All</Button>
             </Col>
+            {/* <Col className="mt-5 d-flex justify-content-center">
+                <Button variant="light" onClick={() => {
+                    dispatch(clearFavourites())
+                }}>Clear All</Button>
+            </Col> */}
         </Row>
-        <Row xs={2} md={3} lg={4} className=" g-3">
+        {/* <Row xs={2} md={3} lg={4} className=" g-3">
             <Button variant="light" onClick={() => {
                 dispatch(clearFavourites())
             }}>Clear Favourites</Button>
-        </Row>
+        </Row> */}
         <Row xs={2} md={3} lg={4} className=" g-3">
             {countriesList
                 .filter((c) => {
@@ -69,7 +77,7 @@ const Favourites = () => {
                     <CountryCard key={country.name.common} country={country} />
                 ))}
         </Row>
-    </Container>)
+    </Container >)
 }
 
 export default Favourites;

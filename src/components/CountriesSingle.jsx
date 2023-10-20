@@ -105,36 +105,54 @@ const CountriesSingle = () => {
   }
 
   return (
-    <Container className="bg-secondary" style={{ minHeight: '80rem' }}>
+    <Container className="bg-secondary " style={{ minHeight: '80rem' }}>
+
+
       <Row className='text-center'>
-        <Col className="mt-5">
-          <h2 className="display-4">{country.name.common}</h2>
-          <h3>{country.capital}</h3>
-          {errors && (
-            <p className="alert alert-danger">
-              Sorry, we don't have weather information for this country.
-            </p>
-          )}
-          {!errors && weather && (
-            <div>
-              <p>
-                Right now it is <strong>{parseInt(weather.main.temp)} °C</strong> in {country.capital} and {weather.weather[0].description}
-              </p>
-              <img
-                src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-                alt={`${weather.weather[0].description}`}
-              />
-            </div>
-          )}
-          <Col md={6}>
-            <Image thumbnail src={`https://source.unsplash.com/1600x900/?${country.capital}`} className="mt-5 justify-content-center" style={{
+        <Col className="m-5">
+          <h2 className="display-4 text-center text-light">{country.name.common}</h2>
+          <h3 className="text-center text-light">{country.capital}</h3>
+          <Image
+            thumbnail
+            src={`https://source.unsplash.com/1600x900/?${country.capital}`}
+            className="mt-5 justify-content-center"
+            style={{
               objectFit: "cover",
-              // minHeight: "150px",
-              // maxHeight: "150px",
-              minWidth: "600px",
-              maxWidth: "600px",
-            }} />
-            {/* <Card.Img
+              // maxWidth: "100%"
+            }}
+          />
+          <h3 className='text-light mt-5'>Current weather:</h3>
+          <Card className="justify-content-center mt-5 p-1">
+            <Card.Body className='bg-info rounded pt-5'>
+              {/* <h2 className="display-4">{country.name.common}</h2>
+              <h3>{country.capital}</h3> */}
+              {errors && (
+                <p style={{ fontSize: "4rem" }}>
+                  🤷
+                </p>
+              )}
+              {!errors && weather && (
+                <div>
+                  <h5>
+                    Right now it is <strong>{parseInt(weather.main.temp)} °C</strong> in {country.capital} and {weather.weather[0].description}
+                  </h5>
+                  <img
+                    src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                    alt={`${weather.weather[0].description}`}
+                  />
+                </div>
+              )}
+
+              {/* <Card.Img thumbnail src={`https://source.unsplash.com/1600x900/?${country.capital}`} className="mt-5 justify-content-center" style={{
+                objectFit: "cover",
+                // minHeight: "150px",
+                // maxHeight: "150px",
+                minWidth: "600px",
+                maxWidth: "600px",
+              }} /> */}
+            </Card.Body>
+          </Card>
+          {/* <Card.Img
                                 variant="top"
                                 src={country.flags.svg}
                                 className="rounded h-50 mt-3"
@@ -146,12 +164,19 @@ const CountriesSingle = () => {
                                     maxWidth: "250px",
                                 }}
                             /> */}
-          </Col>
+
         </Col>
         <Col className="mt-5">
-          <h3>Forecast for the next 5 days:</h3>
+          <h3 className='text-light'>Forecast for today & the next 5 days:</h3>
+          {errors && (
+            <p className="alert alert-danger m-5 p-4 border-light" style={{ border: "5px solid" }}>
+              Sorry, we don't have weather information for this country
+              <span><i className="bi bi-emoji-smile-upside-down fs-4 ms-2">
+              </i></span>
+            </p>
+          )}
           {!errors && forecast && (
-            <div className="">
+            <div>
               {forecast.list.map((item, index) => {
                 const currentDate = createDate(item.dt);
                 if (index === 0 || currentDate !== createDate(forecast.list[index - 1].dt)) {
@@ -170,17 +195,25 @@ const CountriesSingle = () => {
                     //     </Card.Body>
                     //   </Card>
                     // </Col>
-                    <Col key={index} className="mt-5 justify-content-center ms-5 me-5 ps-5 pe-5">
-                      <Card>
-                        <Card.Body className="text-center">
-                          <h5>{currentDate}</h5>
-                          <p>
-                            {Math.round(item.main.temp)} °C in {country.capital} and {item.weather[0].description}
-                          </p>
-                          <img
-                            src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
-                            alt={item.weather[0].description}
-                          />
+
+                    <Col key={index}>
+                      {/* <Col key={index} className="mt-5 justify-content-center ms-5 me-5 ps-5 pe-5"> */}
+                      <Card className="justify-content-center m-5 p-1">
+                        <Card.Body className="text-center bg-info rounded">
+                          <Row>
+                            <Col>
+                              <img
+                                src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
+                                alt={item.weather[0].description}
+                              />
+                            </Col>
+                            <Col className='pt-3'>
+                              <h5>{currentDate}</h5>
+                              <p>
+                                {Math.round(item.main.temp)} °C in {country.capital} and {item.weather[0].description}
+                              </p>
+                            </Col>
+                          </Row>
                         </Card.Body>
                       </Card>
                     </Col>
@@ -194,7 +227,7 @@ const CountriesSingle = () => {
           )}
         </Col>
       </Row>
-      <Row className="mt-4 text-center mb-5">
+      <Row className="m-5 text-center -5">
         <Col>
           <Button variant="light" onClick={() => navigate('/countries')}>
             ← Back to Countries

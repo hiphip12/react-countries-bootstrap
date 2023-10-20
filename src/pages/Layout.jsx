@@ -37,8 +37,8 @@ const Layout = () => {
               </Nav>
             </Navbar.Collapse>
             {user ? (
-              <Button variant="secondary" hidden={loading} onClick={logout}>
-                Logout</Button>) : (<LinkContainer to="/login"><Button variant="success">Login</Button></LinkContainer>)}
+              <Button variant="info" hidden={loading} onClick={logout}>
+                Logout</Button>) : (<LinkContainer to="/login"><Nav.Link>Log In</Nav.Link></LinkContainer>)}
             {/* <Button variant="primary" onClick={logout}>Logout</Button> */}
 
             {/* {user && loading ? (
