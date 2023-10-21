@@ -20,7 +20,7 @@ const Layout = () => {
   return (
     <Container fluid>
       <Row>
-        <Navbar expand="lg" expanded={expanded}>
+        <Navbar expand="lg" expanded={expanded} className="fixed-top bg-light">
           <Container className="justify-content-end">
             <Navbar.Toggle onClick={toggleMenu} aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

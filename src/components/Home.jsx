@@ -9,7 +9,7 @@ const Home = () => {
   const [user, loading] = useAuthState(auth);
 
   return (
-    <Container className="pt-5 background-img" style={{ minHeight: '62rem' }}>
+    <Container className="pt-5 background-img mt-5" style={{ minHeight: '62rem' }}>
       <h1 className="text-center text-light" style={{ textShadow: '0 0 4px white', color: 'black' }}>Weather Forecast by Country Capital 🌤️</h1>
       <p className="text-center text-light" style={{ textShadow: '0 0 4px white', color: 'black' }}>This is a simple app built with React & Bootstrap</p>
 

@@ -40,7 +40,7 @@ const Favourites = () => {
         )
     }
 
-    return (<Container fluid className="bg-secondary" style={{ minHeight: '62rem' }}>
+    return (<Container fluid className="bg-secondary mt-5" style={{ minHeight: '62rem' }}>
         <Row>
             <Col className="my-5 d-flex justify-content-center">
                 <Form>

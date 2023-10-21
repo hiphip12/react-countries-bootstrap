@@ -59,7 +59,7 @@ const CountriesSingle = () => {
   }
   if (loading) {
     return (
-      <Container className="text-center">
+      <Container className="text-center m-5">
         <Spinner
           animation="border"
           role="status"
@@ -73,7 +73,7 @@ const CountriesSingle = () => {
   }
 
   return (
-    <Container className="bg-secondary " style={{ minHeight: '62rem' }}>
+    <Container className="bg-secondary mt-5" style={{ minHeight: '62rem' }}>
 
 
       <Row className='text-center'>

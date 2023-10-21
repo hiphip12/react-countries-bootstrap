@@ -20,7 +20,7 @@ const Countries = () => {
     [dispatch])
 
   return (
-    <Container fluid className="bg-secondary" style={{ minHeight: '70rem' }} >
+    <Container fluid className="bg-secondary mt-5" style={{ minHeight: '70rem' }} >
       <Row>
         <Col className="my-5 d-flex justify-content-center">
           <Form>
