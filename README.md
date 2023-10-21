@@ -8,7 +8,7 @@ This is a project done for the Web Development program [@Helsinki Business Schoo
 
 ## Live page
 
-
+[Try it Here!](https://scintillating-speculoos-f62937.netlify.app/)
 
 ## Technologies
 
