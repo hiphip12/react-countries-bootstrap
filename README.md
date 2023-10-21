@@ -22,7 +22,7 @@ This is a project done for the Web Development program [@Helsinki Business Schoo
 
 ```shell
 git clone https://github.com/hiphip12/react-countries-bootstrap.git
-cd countries-bootstrap-23k-lessons
+cd react-countries-bootstrap
 ```
 add `.env` file with your private keys/ids (follow env.example)
 
