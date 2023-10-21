@@ -40,16 +40,11 @@ const CountriesSingle = () => {
           setLoading(false);
         })
         .catch((error) => {
-          console.log(error);
           setError(true);
           setLoading(false);
         });
     }
   }, [country.capital]);
-
-
-  console.log("Weather: ", weather);
-  console.log("Forecast: ", forecast);
 
   // to get the date diplayed in the forecasts
   function createDate(dt) {

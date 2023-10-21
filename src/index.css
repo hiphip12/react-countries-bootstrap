@@ -2,7 +2,6 @@
 
 * {
   font-family: 'Comfortaa', cursive;
-  /* text-shadow: 0 0 10px white; */
 }
 
 body {
@@ -20,23 +19,8 @@ code {
 }
 
 .background-img {
-  /* background: linear-gradient(to bottom right, #ffcc00, #ff6600); */
   background-image: url(https://images.unsplash.com/photo-1515022009496-4ec97087f0cb?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
   background-size: cover;
   background-position: fixed;
   background-repeat: no-repeat;
-}
-
-/* linear-gradient(to bottom right, #ffcc0035, #ff66003c),  */
-
-.background-color {
-  background-color: #FFC107;
-  /* background-size: cover;
-
-  background-repeat: no-repeat; */
-}
-
-.image-container {
-  max-width: 90%;
-  /* Adjust the value as needed */
 }

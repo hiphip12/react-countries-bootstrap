@@ -12,11 +12,7 @@ const Countries = () => {
   const countriesList = useSelector((state) => state.countries.countries);
   const loading = useSelector((state) => state.countries.isLoading);
 
-  console.log("CountriesList = ", countriesList)
-
   const [search, setSearch] = useState('')
-
-  console.log("Search: ", search)
 
   useEffect(() => {
     dispatch(initializeCountries())
