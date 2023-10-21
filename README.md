@@ -22,28 +22,14 @@ This is a project done for the Web Development program [@Helsinki Business Schoo
 
 ```shell
 git clone https://github.com/hiphip12/react-countries-bootstrap.git
+cd countries-bootstrap-23k-lessons
 ```
-add `.env` file with your keys (follow env.example)
+add `.env` file with your private keys/ids (follow env.example)
 
 ```shell
 npm install
 npm start
 ```
-
-## Screenshots
-
-
-
-### Front page:
-![alt text](assets/Screenshot_frontpage1.png)
-![alt text](assets/Screenshot_frontpage2.png)
-
-### Projects page:
-![alt text](assets/Screenshot_projects1.png)
-
-### Contact:
-![alt text](assets/Screenshot_contact.png)
-
 ## Credits
 
 The assignment, inital codebase and guidance were provided by [Martin Holland](https://github.com/martin-holland) during Sep/Oct 2023 @Helsinki Business College(https://en.bc.fi).
@@ -57,3 +43,33 @@ Country data was provided by the RESTFul API from [Rest Countries](https://restc
 Images provided by [unsplash.com](https://unsplash.com/photos/sea-near-rocks-during-black-clouds-pCqyc6EgQwE)
 
 Favicon is from [unicode.org](https://unicode.org/emoji/charts/full-emoji-list.html#1f326) (code U+1F326)
+
+## Screenshots
+
+### Home page:
+#### Desktop
+![alt text](src/assets/screenshots/homepage-desktop.png)
+#### Mobile
+![alt text](src/assets/screenshots/homepage-mobile.png)
+
+### Resgitration & Log In pages:
+#### Desktop
+![alt text](src/assets/screenshots/register-desktop.png)
+#### Mobile
+![alt text](src/assets/screenshots/login-mobile.png)
+
+### Countries & Favourites pages:
+#### Desktop
+![alt text](src/assets/screenshots/countries-desktop.png)
+#### Mobile
+![alt text](src/assets/screenshots/favourties-mobile.png)
+
+### Weather Forecast page:
+#### Desktop
+![alt text](src/assets/screenshots/forecast-desktop.png)
+#### Mobile
+![alt text](src/assets/screenshots/forecast-mobile.png)
+
+### No weather info page
+![alt text](src/assets/screenshots/error-mobile.png)
+

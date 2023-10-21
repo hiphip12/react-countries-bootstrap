@@ -26,7 +26,7 @@ const Home = () => {
           {user ? (<p>You are already logged in, use the menu on the top or
             <Link to="/countries" className="ms-1 text-light" >start here</Link>. </p>) : (<Container>
               <Container>
-                <small>Please Log in or Register to access (this is just a sample app, please use dummy info)</small>
+                <small>Please Log in or Register to access (this is just a sample app, please use dummy data)</small>
               </Container>
               <Button className="m-2" variant="light" onClick={() => navigate('/Login')}>
                 Log In

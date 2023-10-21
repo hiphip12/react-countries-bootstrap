@@ -17,7 +17,7 @@ const Login = () => {
     }, [user, loading])
 
     return (
-        <Container className="d-flex flex-column align-items-center justify-content-center text-center bg-secondary" style={{ minHeight: '62rem' }}>
+        <Container className="d-flex flex-column align-items-center justify-content-center text-center bg-secondary mt-5" style={{ minHeight: '62rem' }}>
             <Col className="d-flex flex-column mt-5 pt-5">
                 <h5 className="text-light">Please enter your credentials</h5>
                 <div className="d-flex flex-column mt-2">

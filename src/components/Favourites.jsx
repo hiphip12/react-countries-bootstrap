@@ -47,7 +47,7 @@ const Favourites = () => {
                     <Form.Control
                         type="search"
                         className="me-2 "
-                        placeholder="Search for countries"
+                        placeholder="Search favourites"
                         aria-label="Search"
                         onChange={(e) => setSearch(e.target.value)}
                     />
