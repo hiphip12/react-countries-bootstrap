@@ -32,7 +32,7 @@ npm start
 ```
 ## Credits
 
-The assignment, inital codebase and guidance were provided by [Martin Holland](https://github.com/martin-holland) during Sep/Oct 2023 @Helsinki Business College(https://en.bc.fi).
+The assignment, inital codebase and guidance were provided by [Martin Holland](https://github.com/martin-holland) during Sep/Oct 2023 [@Helsinki Business College](https://en.bc.fi).
 
 Authentication backend & data storage provided by [Google's Firebase](https://firebase.google.com/)
 
