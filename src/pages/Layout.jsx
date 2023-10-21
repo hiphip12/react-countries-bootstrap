@@ -12,15 +12,15 @@ import { useState } from 'react';
 
 const Layout = () => {
   const [user, loading] = useAuthState(auth);
-  const [largescreen, setLargescreen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const toggleMenu = () => {
-    setLargescreen(!largescreen);
+    setExpanded(!expanded);
   };
   return (
     <Container fluid>
       <Row>
-        <Navbar expand="lg" largescreen={largescreen}>
+        <Navbar expand="lg" expanded={expanded}>
           <Container className="justify-content-end">
             <Navbar.Toggle onClick={toggleMenu} aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

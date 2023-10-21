@@ -10,7 +10,7 @@ const CountryCard = ({ country }) => {
     return (
         <Col className="mb-5">
 
-            <Card className="h-100 m-2 bg-info">
+            <Card className="h-100 m-2 bg-info hover-custom">
 
                 <LinkContainer
                     to={`/countries/${country.name.common}`}

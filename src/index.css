@@ -24,3 +24,7 @@ code {
   background-position: fixed;
   background-repeat: no-repeat;
 }
+
+.hover-custom:hover {
+  box-shadow: 0 0 10px white;
+}
