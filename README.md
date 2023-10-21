@@ -13,8 +13,7 @@ This is a project done for the Web Development program [@Helsinki Business Schoo
 ## Technologies
 
 - Reactjs
-- React Redux
-- Redux Toolkit
+- React Redux and React Redux Toolkit​​​​​​
 - Bootstrap
 - Google Firebase (Authentication, and Cloud Firestore)
 
